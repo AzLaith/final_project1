@@ -1,0 +1,17 @@
+Задание 1:
+
+select a.login, 
+count(c.id) AS "deliveryCount" 
+from "Couriers" AS a left join "Orders" AS c ON a.id=c."courierId" 
+where c."inDelivery"=true 
+group by a.login;
+
+Задание 2:
+
+select track, 
+case 
+when finished=true then 2 
+when cancelled = true then -1 
+when "inDelivery"=true then 1 
+else 0 end as status 
+from "Orders";
